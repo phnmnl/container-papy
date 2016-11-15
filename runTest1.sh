@@ -27,4 +27,13 @@ if ! cmp -s "linearregression_0.csv" "linearregression.csv"; then
 	exit 1
 fi
 
+if diff "diffgroups_0.csv" "diffgroups.csv"; then
+	echo "diffgroups files content don't match!"
+	exit 1
+fi
+
+if diff "linearregression_0.csv" "linearregression.csv"; then
+	echo "linearregression files content don't match!"
+	exit 1
+fi
 echo "All files created successfully"
