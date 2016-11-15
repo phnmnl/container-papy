@@ -17,23 +17,23 @@ wget https://raw.githubusercontent.com/jianlianggao/papy/develop/results/linearr
 
 #run comparison
 # compare output
-if ! cmp -s "diffgroups_0.csv" "diffgroups.csv"; then
-	echo "diffgroups files don't match!"
-	exit 1
+
+temp="$(diff "diffgroups.csv" "diffgroups_0.csv")"
+
+if [ ! -z "$temp" ]; then 
+   echo "diffgroups are not equal"
+   exit 1
+else
+   echo "diffgroups are equal"
 fi
 
-if ! cmp -s "linearregression_0.csv" "linearregression.csv"; then
-	echo "linearregression files don't match!"
-	exit 1
+temp="$(diff "linearregression.csv" "linearregression_0.csv")"
+
+if [ ! -z "$temp" ]; then 
+   echo "linearregression are not equal"
+   exit 1
+else
+   echo "linearregression are equal"
 fi
 
-if diff "diffgroups_0.csv" "diffgroups.csv"; then
-	echo "diffgroups files content don't match!"
-	exit 1
-fi
-
-if diff "linearregression_0.csv" "linearregression.csv"; then
-	echo "linearregression files content don't match!"
-	exit 1
-fi
 echo "All files created successfully"
