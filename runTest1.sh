@@ -18,6 +18,8 @@ wget https://raw.githubusercontent.com/jianlianggao/papy/develop/results/linearr
 #run comparison
 # compare output
 
+diff "diffgroups.csv" "diffgroups_0.csv"
+
 temp="$(diff "diffgroups.csv" "diffgroups_0.csv")"
 
 if [ ! -z "$temp" ]; then 
