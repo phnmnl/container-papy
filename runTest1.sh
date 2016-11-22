@@ -27,13 +27,13 @@ else
    echo "diffgroups are equal"
 fi
 
-temp="$(diff "linearregression.csv" "linearregression_0.csv")"
+#temp="$(diff "linearregression.csv" "linearregression_0.csv")"
 
-if [ ! -z "$temp" ]; then 
-   echo "linearregression are not equal"
-   exit 1
-else
-   echo "linearregression are equal"
-fi
+#if [ ! -z "$temp" ]; then 
+#   echo "linearregression are not equal"
+#   exit 1
+#else
+#   echo "linearregression are equal"
+#fi
 
 echo "All files created successfully"
