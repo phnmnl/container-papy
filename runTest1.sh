@@ -38,7 +38,7 @@ cd /usr/local/bin
 #   echo "linearregression are equal"
 #fi
 ## check if the file was generated
-file_name = "papy_result_surface.html"
+file_name="papy_result_surface.html"
 if [ -f "$file_name" ]; then 
   echo "$file found."
 else
