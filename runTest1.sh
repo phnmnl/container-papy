@@ -40,9 +40,9 @@ cd /usr/local/bin
 ## check if the file was generated
 file_name="papy_result_surface.html"
 if [ -f "$file_name" ]; then 
-  echo "$file found."
+  echo "$file_name found."
 else
-  echo "$file not found!"
+  echo "$file_name not found!"
   exit 1
 fi
 
