@@ -1,0 +1,39 @@
+<tool id="power-analysis" name="PAPY">
+     <description>PAPY</description>
+     <requirements>
+       <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/papy</container>
+     </requirements>
+     <command><![CDATA[
+pa.py $testdata_input $exp_cols
+       ]]>
+     </command>
+     <inputs>
+         <param name="testdata_input" type="data" format="csv" label="Test Dataset"/>
+         <param name="exp_cols" type="text" value="8" label="Number of columes in the test dataset for power analysis"/>
+     </inputs>
+     <outputs>
+         <data name="RelCon" format="tabular" from_work_dir="results/RelCon.txt" label="Relative concentrations"/>
+         <data name="MultipletsPpmShifts" format="tabular" from_work_dir="results/MultipletsPpmShifts.txt" label="Multiplets PPM Shifts"/>
+         <data name="RelConCreInt" format="tabular" from_work_dir="results/RelConCreInt.txt" label="Relative concentrations ?"/>
+
+         <collection name="spectra" type="list" labels="Stack from ${on_string}">
+             <discover_datasets pattern="(?P&lt;name&gt;specFit_.+_)\.pdf$" ext="pdf" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;L_.+)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;NMRdata_mod_.+)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;beta_sam_.+_rr_0)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;beta_.+_rr_0)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;delta_draw_mean_.+)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;delta_sam_.+)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;lambda_sam_.+_rr_0)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;metaFit_sam_.+_rr_0)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;metaIndFit_sam_.+_rr_0)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;metaTempHR_.+_rr_0)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;metaTemp_.+_rr_0)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;specFitHR_.+_rr_0)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;specFit_.+_rr_0)\.txt$" ext="tabular" directory="results" />
+             <discover_datasets pattern="(?P&lt;name&gt;theta_sam_.+_rr_0)\.txt$" ext="tabular" directory="results" />
+         </collection>
+     </outputs>
+     <help>
+     </help>
+ </tool>
