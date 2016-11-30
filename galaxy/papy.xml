@@ -4,7 +4,7 @@
        <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/papy</container>
      </requirements>
      <command><![CDATA[
-pa.py $testdata_input $exp_cols
+./run_papy.sh $testdata_input $exp_cols
        ]]>
      </command>
      <inputs>
