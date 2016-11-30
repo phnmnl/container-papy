@@ -5,7 +5,7 @@ RUN apt-get -y update && apt-get -y install git python-dev python-tk python-pip 
 RUN pip install --upgrade pip
 RUN pip install numpy scipy joblib multiprocessing statsmodels matplotlib
 RUN pip install git+https://github.com/jianlianggao/papy.git
-ADD runTest1.sh /usr/local/bin/runTest1.sh
-RUN chmod +x /usr/local/bin/runTest1.sh
+ADD run_papy.sh /usr/local/bin/run_papy.sh
+RUN chmod +x /usr/local/bin/run_papy.sh
 
-ENTRYPOINT ["runTest1.sh"]
+ENTRYPOINT ["run_papy.sh"]
