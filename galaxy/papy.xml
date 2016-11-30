@@ -1,0 +1,19 @@
+<tool id="power-analysis" name="PAPY">
+     <description>PAPY</description>
+     <requirements>
+       <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/papy</container>
+     </requirements>
+     <command><![CDATA[
+./run_papy.sh $testdata_input $exp_cols
+       ]]>
+     </command>
+     <inputs>
+         <param name="testdata_input" type="data" format="csv" label="Test Dataset"/>
+         <param name="exp_cols" type="text" value="8" label="Number of columes in the test dataset for power analysis"/>
+     </inputs>
+     <outputs>
+         <data name="papy_result_surface" format="html" from_work_dir="papy_result_surface.html" label="Plot results"/>
+     </outputs>
+     <help>
+     </help>
+ </tool>
