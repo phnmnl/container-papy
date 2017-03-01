@@ -4,15 +4,18 @@
        <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/papy</container>
      </requirements>
      <command><![CDATA[
-./run_papy.sh $testdata_input $exp_cols
+./run_papy.sh $testdata_input $exp_cols $sample_size $effect_size $repeats
        ]]>
      </command>
      <inputs>
          <param name="testdata_input" type="data" format="csv" label="Test Dataset"/>
-         <param name="exp_cols" type="text" value="8" label="Number of columes in the test dataset for power analysis"/>
+         <param name="exp_cols" type="text" value="8" label="Number of columes in the test dataset for power analysis, can be either a single number, e.g., 8 or a range 2-16"/>
+         <param name="sample_size" type="text" value="0:100:501" label="Sample sizes matrix, e.g., 0:100:501"/>
+         <param name="effect_size" type="text" value="0.05:0.05:0.7" label="Effect sizes matrix, e.g., 0.05:0.05:0.7"/>
+         <param name="repeats" type="text" value="10" label="Number of repeats"/>
      </inputs>
      <outputs>
-         <data name="papy_result_surface" format="html" from_work_dir="papy_result_surface.html" label="Plot results"/>
+         <data name="papy_results" format="zip" from_work_dir="papy_output_zip.zip" label="Power Analysis results"/>
      </outputs>
      <help>
      </help>
