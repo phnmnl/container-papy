@@ -5,7 +5,7 @@ LABEL software.version="2.0"
 LABEL version="1.0"
 LABEL software="papy"
 
-RUN apt-get -y update && apt-get -y install git python-pip
+RUN apt-get -y update && apt-get -y install git python-pip wget
 #RUN pip install --upgrade pip
 #RUN pip install numpy scipy multiprocessing statsmodels
 RUN pip install git+https://github.com/jianlianggao/papy.git
