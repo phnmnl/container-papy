@@ -1,7 +1,7 @@
 ![Logo](PAPY_logo.gif)
 
 # Statistical Power Analysis tool
-Version: 1.0
+Version: 2.0
 
 ## Short Description
 
