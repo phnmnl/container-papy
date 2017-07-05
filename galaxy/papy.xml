@@ -1,18 +1,55 @@
 <tool id="power-analysis" name="PAPY">
      <description>PAPY</description>
      <requirements>
+
        <container type="docker">container-registry.phenomenal-h2020.eu/phnmnl/papy</container>
      </requirements>
      <command><![CDATA[
-./run_papy.sh $testdata_input $exp_cols
+pa.py $testdata_input $exp_cols $sample_size $effect_size $repeats $outcome_type 4 \$PWD
        ]]>
      </command>
      <inputs>
-         <param name="testdata_input" type="data" format="csv" label="Test Dataset"/>
-         <param name="exp_cols" type="text" value="8" label="Number of columes in the test dataset for power analysis"/>
+         <param name="testdata_input" type="data" label="Test Dataset"/>
+         <param name="exp_cols" type="text" value="8" label="Number of columes in the test dataset for power analysis, can be either a single number, e.g., 8 or a range 2-16"/>
+         <param name="sample_size" type="text" value="0:100:501" label="Sample sizes matrix, e.g., 0:100:501"/>
+         <param name="effect_size" type="text" value="0.05:0.05:0.7" label="Effect sizes matrix, e.g., 0.05:0.05:0.7"/>
+         <param name="repeats" type="text" value="10" label="Number of repeats"/>
+         <param name="outcome_type" type="select" label="Outcome Variables Type" help="">
+            <option value="0">Classification (discrete)</option>
+            <option value="1">Regression (continuous)</option>
+            <option value="2">Classification (discrete) and Regression (continuous)</option> 
+         </param>
      </inputs>
      <outputs>
-         <data name="papy_result_surface" format="html" from_work_dir="papy_result_surface.html" label="Plot results"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <outputs>
+         <data name="papy_results" format="zip" from_work_dir="papy_output_zip.zip" label="Power Analysis results"/>
+         <data name="power_rate_byCorrection" format="html" from_work_dir="results/plot-power-rate-byCorrection-diffgroups.html" label="Proportion of Power >0.8 with Benjamini-Yekutieli correction"/>
+         <data name="power_rate_byCorrection_slice" format="html" from_work_dir="results/plot-slice-power-rate-byCorrection-diffgroups.html" label="Proportion of Power >0.8 VS sample size (Benjamini-Yekutieli correction)"/>
+         <data name="power_rate_byCorrection_slice_eff" format="html" from_work_dir="results/plot-slice-power-rate-byCorrection-diffgroups-eff.html" label="Proportion of Power >0.8 VS effect size (Benjamini-Yekutieli correction)"/>
+         <data name="power_rate_noCorrection" format="html" from_work_dir="results/plot-power-rate-noCorrection-diffgroups.html" label="Proportion of Power >0.8 with no correction"/>
+         <data name="power_rate_noCorrection_slice" format="html" from_work_dir="results/plot-slice-power-rate-noCorrection-diffgroups.html" label="Proportion of Power >0.8 VS sample size (no correction)"/>
+         <data name="power_rate_noCorrection_slice_eff" format="html" from_work_dir="results/plot-slice-power-rate-noCorrection-diffgroups-eff.html" label="Proportion of Power >0.8 VS effect size (no correction)"/>
+
      </outputs>
      <help>
      </help>
